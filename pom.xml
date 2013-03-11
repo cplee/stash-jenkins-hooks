@@ -4,7 +4,7 @@
 	<groupId>com.nektos</groupId>
 	<artifactId>stash-jenkins-hooks</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Jenkins Notification Hooks</name>
+	<name>Jenkins Notification</name>
 	<packaging>atlassian-plugin</packaging>
 	<dependencyManagement>
 		<dependencies>
@@ -32,6 +32,11 @@
 		<dependency>
 			<groupId>com.atlassian.stash</groupId>
 			<artifactId>stash-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.atlassian.stash</groupId>
+			<artifactId>stash-ssh</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -163,4 +168,16 @@
 		<amps.version>4.1.4</amps.version>
 		<plugin.testrunner.version>1.1</plugin.testrunner.version>
 	</properties>
+	<description>A basic post-receive hook that notifies Jenkins when changes are pushed to Stash.  This plugin requires the Git Plugin to be installed on your Jenkins server (https://wiki.jenkins-ci.org/display/JENKINS/Git+Plugin)
+
+This plugin checks for the existence of a system property named jenkins.url to use as the default.</description>
+	<organization>
+		<name>Casey Lee</name>
+		<url>http://www.nektos.com</url>
+	</organization>
+	<scm>
+		<connection>scm:git:git@github.com:cplee/stash-jenkins-hooks.git</connection>
+		<url>scm:git:git@github.com:cplee/stash-jenkins-hooks.git</url>
+		<developerConnection>scm:git:git@github.com:cplee/stash-jenkins-hooks.git</developerConnection>
+	</scm>
 </project>

@@ -11,8 +11,24 @@
         {param labelContent}
             {stash_i18n('com.nektos.stash.jenkins.label', 'Jenkins URL')}
         {/param}
-        {param descriptionText: stash_i18n('com.nektos.stash.jenkins.description', 'The URL for your Jenkins server') /}
+        {param descriptionText: stash_i18n('com.nektos.stash.jenkins.description', 'The URL for your Jenkins server.  Leave blank to use the default for this Stash instance.') /}
         {param extraClasses: 'long' /}
         {param errorTexts: $errors ? $errors['jenkins_url'] : null /}
+    {/call}
+    {call aui.form.field}
+        {param id: 'use_http' /}
+        {param name: 'use_http' /}
+        {param type: 'checkbox' /}
+        {param labelText: stash_i18n('com.nektos.stash.http.label', 'Use HTTP?') /}
+        {param isChecked: $config['use_http'] /}
+        {param descriptionText: stash_i18n('com.nektos.stash.http.description', 'Use HTTP for the SCM URL delivered to Jenkins in the notification.  Defaults to SSH, if available.') /}
+    {/call}
+    {call aui.form.field}
+        {param id: 'no_branch' /}
+        {param name: 'no_branch' /}
+        {param type: 'checkbox' /}
+        {param labelText: stash_i18n('com.nektos.stash.branch.label', 'No Branches?') /}
+        {param isChecked: $config['no_branch'] /}
+        {param descriptionText: stash_i18n('com.nektos.stash.branch.description', 'Do not include changed branches in the notification') /}
     {/call}
 {/template}
