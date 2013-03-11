@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.nektos</groupId>
 	<artifactId>stash-jenkins-hooks</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>Jenkins Notification</name>
 	<packaging>atlassian-plugin</packaging>
 	<dependencyManagement>

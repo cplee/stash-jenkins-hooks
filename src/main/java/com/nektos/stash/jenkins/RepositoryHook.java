@@ -42,7 +42,7 @@ public class RepositoryHook implements AsyncPostReceiveRepositoryHook, Repositor
     	boolean includeBranch = (!context.getSettings().getBoolean("no_branch", false));
     	boolean useSSH = (sshResolver!=null && !context.getSettings().getBoolean("use_http", false));
         String url = context.getSettings().getString("jenkins_url");
-        if(url == null) {
+        if(url == null || url.length()==0) {
         	url = System.getProperty("jenkins.url");
         }
         if (url != null) {
@@ -69,8 +69,12 @@ public class RepositoryHook implements AsyncPostReceiveRepositoryHook, Repositor
 
     @Override
     public void validate(Settings settings, SettingsValidationErrors errors, Repository repository) {
-        if (settings.getString("jenkins_url", System.getProperty("jenkins.url")).isEmpty()) {
-            errors.addFieldError("jenkins_url", "Jenkins URL field is blank, please supply one");
+    	String url = settings.getString("jenkins_url");
+    	if(url==null  || url.isEmpty()) {
+    		url = System.getProperty("jenkins.url");
+    	}
+    	if(url==null || url.isEmpty()) {
+            errors.addFieldError("jenkins_url", "Jenkins URL field is blank, please supply one or specifiy a default with -Djenkins.url=http://my.jenkins.host");
         }
     }
     
